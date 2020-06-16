@@ -25,8 +25,8 @@ namespace Sitecore.Support.XA.Foundation.Presentation.EventHandlers
         protected override void ClearCache(Item item, bool clearPerDatabase = true)
         {
 
-            bool _isCarouselItem = item.InheritsFrom(new ID("{ADD22F05-6B4C-4344-95AD-9A1A9BA6A216}"));
-            if (!_isCarouselItem && (!item.Paths.IsContentItem || !item.InheritsFrom(Sitecore.XA.Foundation.Presentation.Templates.PartialDesign.ID) && !item.InheritsFrom(Sitecore.XA.Foundation.Presentation.Templates.Design.ID) && !item.InheritsFrom(Sitecore.XA.Foundation.Multisite.Templates.Page.ID)))
+            bool _isCarouselItemOrSlide = item.InheritsFrom(new ID("{ADD22F05-6B4C-4344-95AD-9A1A9BA6A216}")) || item.InheritsFrom(new ID("{142E5FC1-EC62-4540-BAD9-CD88F337CD2E}"));
+            if (!_isCarouselItemOrSlide && (!item.Paths.IsContentItem || !item.InheritsFrom(Sitecore.XA.Foundation.Presentation.Templates.PartialDesign.ID) && !item.InheritsFrom(Sitecore.XA.Foundation.Presentation.Templates.Design.ID) && !item.InheritsFrom(Sitecore.XA.Foundation.Multisite.Templates.Page.ID)))
                 return;
             Item siteItem1 = ServiceLocator.ServiceProvider.GetService<IMultisiteContext>().GetSiteItem(item);
             if (siteItem1 != null)
